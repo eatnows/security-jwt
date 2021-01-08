@@ -14,8 +14,11 @@ public class Account {
     @Column(name = "ACCOUNT_USERNAME")
     private String username;
 
-    @Column(name = "ACCOUNT_PASSWORD")
+    @Column(name = "ACCOUNT_LOGINID")
     private String userId;
+
+    @Column(name = "ACCOUNT_PASSWORD")
+    private String password;
 
     @Column(name = "ACCOUNT_ROLE")
     @Enumerated(value = EnumType.STRING)
