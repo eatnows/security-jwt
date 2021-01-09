@@ -27,7 +27,7 @@ public class JwtFactoryTest {
     @Before
     public void setUp() {
         Account account = new Account();
-        log.error("userId: {}, password: {}, role: {}", account.getUserId(), account.getPassword(), account.getUserRole());
+        log.error("userId: {}, password: {}, role: {}", account.getUserId(), account.getPassword(), account.getUserRole().getRoleName());
         this.context = AccountContext.fromAccountModel(account);
     }
 

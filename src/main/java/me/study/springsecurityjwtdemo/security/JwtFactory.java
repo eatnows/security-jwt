@@ -27,7 +27,8 @@ public class JwtFactory {
             // 이걸 이제 SuccessHandler에서 인젝션 받아서 사용하면된다.
             token = JWT.create()
                     .withIssuer("eatnows")
-                    .withClaim("USER_ROLE", context.getAccount().getUserRole().name())
+                    .withClaim("USERNAME", context.getAccount().getUserId())
+                    .withClaim("USER_ROLE", context.getAccount().getUserRole().getRoleName())
                     .sign(generateAlgorithm());
         } catch (Exception e) {
             log.error(e.getMessage());
