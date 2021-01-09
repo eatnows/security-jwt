@@ -11,13 +11,12 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.util.NoSuchElementException;
 
+@Component
 public class FormLoginAuthenticationProvider implements AuthenticationProvider {
-
-    @Autowired
-    private AccountContextService accountContextService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -50,8 +49,8 @@ public class FormLoginAuthenticationProvider implements AuthenticationProvider {
     }
 
     private boolean isCorrectPassword(String password, Account account) {
-        // 원본(비교 대상이 될 패스워드)가 매개변수 앞에 와야함
+        // 원본(비교 대상이 될 패스워드)가 매개변수 뒤에 와야함
         // 순서가 바뀌면 에러가 난다.
-        return passwordEncoder.matches(account.getPassword(), password);
+        return passwordEncoder.matches(password, account.getPassword());
     }
 }

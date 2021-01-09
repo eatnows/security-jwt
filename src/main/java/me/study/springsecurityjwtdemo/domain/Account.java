@@ -15,14 +15,14 @@ public class Account {
     private String username;
 
     @Column(name = "ACCOUNT_LOGINID")
-    private String userId;
+    private String userId = "emalnyun@naver.com";
 
     @Column(name = "ACCOUNT_PASSWORD")
-    private String password;
+    private String password = "1234";
 
     @Column(name = "ACCOUNT_ROLE")
     @Enumerated(value = EnumType.STRING)
-    private UserRole userRole;
+    private UserRole userRole = UserRole.USER;
 
     @Column(name = "ACCOUNT_SOCIAL_ID")
     private Long socialId;
