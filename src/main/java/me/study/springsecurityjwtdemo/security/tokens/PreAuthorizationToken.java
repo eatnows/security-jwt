@@ -1,6 +1,8 @@
 package me.study.springsecurityjwtdemo.security.tokens;
 
+import me.study.springsecurityjwtdemo.domain.SocialProviders;
 import me.study.springsecurityjwtdemo.dtos.FormLoginDto;
+import me.study.springsecurityjwtdemo.dtos.SocialLoginDto;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 public class PreAuthorizationToken extends UsernamePasswordAuthenticationToken {
@@ -13,8 +15,16 @@ public class PreAuthorizationToken extends UsernamePasswordAuthenticationToken {
         super(username, password);
     }
 
+    private PreAuthorizationToken(SocialProviders providers, SocialLoginDto dto) {
+        super(providers, dto);
+    }
+
     public PreAuthorizationToken(FormLoginDto dto) {
         this(dto.getId(), dto.getPassword());
+    }
+
+    public PreAuthorizationToken(SocialLoginDto dto) {
+        this(dto.getProviders(), dto);
     }
 
     
