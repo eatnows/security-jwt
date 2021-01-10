@@ -22,6 +22,7 @@ public class SpringSecurityJwtDemoApplication {
             account.setPassword(passwordEncoder.encode("1234"));
 
             accountRepository.save(account);
+
         };
     }
 
